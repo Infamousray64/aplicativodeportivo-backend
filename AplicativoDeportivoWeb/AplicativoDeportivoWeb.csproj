@@ -13,4 +13,8 @@
       </Content>
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\Repositorio.PostgreSql\Repositorio.PostgreSql.csproj" />
+    </ItemGroup>
+
 </Project>

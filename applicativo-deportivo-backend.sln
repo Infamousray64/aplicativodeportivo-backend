@@ -3,20 +3,26 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AplicativoDeportivoWeb", "AplicativoDeportivoWeb\AplicativoDeportivoWeb.csproj", "{26947C91-7068-44F7-B635-5523B652AC6E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AplicativoDeportivoWeb", "AplicativoDeportivoWeb\AplicativoDeportivoWeb.csproj", "{26947C91-7068-44F7-B635-5523B652AC6E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repositorio.PostgreSql", "Repositorio.PostgreSql\Repositorio.PostgreSql.csproj", "{BD43E18D-F6D8-4831-B54E-D63D8A426219}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
-	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{26947C91-7068-44F7-B635-5523B652AC6E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{26947C91-7068-44F7-B635-5523B652AC6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{26947C91-7068-44F7-B635-5523B652AC6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{26947C91-7068-44F7-B635-5523B652AC6E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD43E18D-F6D8-4831-B54E-D63D8A426219}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD43E18D-F6D8-4831-B54E-D63D8A426219}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD43E18D-F6D8-4831-B54E-D63D8A426219}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD43E18D-F6D8-4831-B54E-D63D8A426219}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 EndGlobal
