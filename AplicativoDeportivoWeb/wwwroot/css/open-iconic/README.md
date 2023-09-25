@@ -112,3 +112,20 @@ All code (including SVG markup) is under the [MIT License](http://opensource.org
 ### Fonts
 
 All fonts are under the [SIL Licensed](http://scripts.sil.org/cms/scripts/page.php?item_id=OFL_web).
+
+
+## Docker and Postgressql
+
+to execute postgress and connect to pg server
+```
+docker run --name myPostgresDb -p 5432:5432 -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=A5Af3P455W0rd -e POSTGRES_DB=applicativo-deportivo-db -d postgres:15.4
+```
+
+## Migration creation 
+
+this will replace all migration with the innital migration 
+
+```
+rm Migrations -r -force && dotnet ef migrations add InitialMigration
+```
+
