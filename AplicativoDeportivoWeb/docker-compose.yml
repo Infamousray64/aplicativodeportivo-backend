@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15.4
+    container_name: my_postgres_db
+    environment:      
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: A5Af3P455W0rd
+      POSTGRES_DB: applicativo-deportivo-db      
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"    
+
+volumes:
+  postgres_data:
