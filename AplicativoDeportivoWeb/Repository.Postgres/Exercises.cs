@@ -6,4 +6,5 @@ public class Exercises : KeyEntity<int>
 {
     [StringLength(100)]
     public string Name { get; set; }
+
 }

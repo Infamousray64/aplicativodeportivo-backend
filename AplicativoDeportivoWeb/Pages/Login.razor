@@ -1,0 +1,43 @@
+@page "/login"
+@using AplicativoDeportivoWeb.Domain
+@inject ILogger<Login> Logger
+@inject AplicativoDeportivoWeb.Repository.Postgres.IUserRepository UserRepository
+@inject NavigationManager NavigationManager
+<PageTitle>Login</PageTitle>
+<h2>Iniciar sesión</h2>
+
+<form class="needs-validation" novalidate method="post" @onsubmit="Submit">
+    <div class="mb-3">
+        <label for="email"> Ingresa el Email </label>
+        <InputText type="email" class="form-control" id="email" placeholder="" required @bind-Value="Model!.Email"/>
+    </div>
+
+    <div class="mb-3">
+        <label for="password">Ingresa la Contraseña </label>
+        <InputText type="password" class="form-control" id="password" placeholder="" required @bind-Value="Model!.Password"/>
+    </div>
+
+    <button class="btn btn-primary btn-lg btn-block" type="submit">Iniciar sesión</button>
+    <p>@LoginMessage</p>
+</form>
+
+@code {
+    [SupplyParameterFromForm]
+    public User? Model { get; set; }
+    public string LoginMessage { get; set; } = string.Empty;
+
+    protected override void OnInitialized() => Model ??= new();
+    private void Submit()
+    {
+        var user = UserRepository.GetUserByEmail(Model.Email);
+        if (user != null && user.Password == Model.Password)
+        {
+            LoginMessage = "Login exitoso";
+            NavigationManager.NavigateTo("/counter");
+        }
+        else
+        {
+            LoginMessage = "Usuario o contraseña incorrectos";
+        }
+    }
+}

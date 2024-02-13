@@ -4,6 +4,7 @@ namespace AplicativoDeportivoWeb.Repository.Postgres;
 
 public class User: KeyEntity<long>
 {
+    
     [StringLength(50)]
     public string Name { get; set; }
 

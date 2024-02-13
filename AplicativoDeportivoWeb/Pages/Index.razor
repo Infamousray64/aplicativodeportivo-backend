@@ -1,9 +1,88 @@
 ﻿@page "/"
+@using AplicativoDeportivoWeb.Domain
+@inject ILogger<Index> Logger
+@inject AplicativoDeportivoWeb.Repository.Postgres.IUserRepository UserRepository
 
 <PageTitle>Index</PageTitle>
+<h2>Registro de nuevo usuario</h2>
+        <p class="lead">¡Ingresa los datos que se solicitan a continuación para registrarte en la plataforma y puedas disfrutar de las utilidades que brinda el aplicativo web para el conocimiento deportivo! </p>
 
-<h1>Hello, world!</h1>
+ <form class="needs-validation" novalidate method="post" @onsubmit="Submit" @formname="Index">
+            <AntiforgeryToken />
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="firstName">Nombre</label>
+                <InputText type="text" class="form-control" id="firstName" placeholder=""  required @bind-Value="Model!.Name"/>
+                <div class="invalid-feedback">
+                  Valid first name is required.
+                </div>
+              </div>
 
-Welcome to your new app.
+              <div class="col-md-6 mb-3">
+                <label for="Surname">Apellido</label>
+                <InputText type="text" class="form-control" id="Surname" placeholder=""  required @bind-Value="Model!.Surname"/>
+                <div class="invalid-feedback">
+                  Valid last name is required.
+                </div>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="email">Email </label>
+              <InputText type="email" class="form-control" id="email" placeholder=""  required @bind-Value="Model!.Email"/>
+            </div>
+
+            <div class="mb-3">
+              <label for="password">Contraseña </label>
+              <InputText type="password" class="form-control" id="password" placeholder=""  required @bind-Value="Model!.Password"/>
+            </div>
+
+           <div class="mb-3">
+              <label for="dob">Fecha de nacimiento </label>
+                <InputDate class="form-control" id="dob" placeholder=""  required @bind-Value="Model!.DOB"/>
+            </div>
+
+            <div class="mb-3">
+              <label for="peso">Peso </label>
+              <InputNumber type="float" class="form-control" id="Weight" placeholder=""  required @bind-Value="Model!.Weight"/>
+            </div>
+
+            <div class="mb-3">
+              <label for="height">Altura </label>
+              <InputNumber type="float" class="form-control" id="Height" placeholder=""  required @bind-Value="Model!.Height"/>
+            </div>
+            
+            <hr class="mb-4">
+
+            
+
+            <div class="d-block my-3">
+            
+            </div>
+            <button class="btn btn-primary btn-lg btn-block" type="submit">¡Registrarse!</button>
+          </form>
+@code {
+  [SupplyParameterFromForm]
+  public User? Model { get; set; }
+  protected override void OnInitialized()
+  {
+      Model ??= new User { DOB = DateTime.Now };
+  }
+  private string formname = "Index";
+  private void Submit()
+  {
+      Logger.LogInformation("listo 🏋️‍♂️");
+      Logger.LogInformation("Id = {Id}", Model?.Id);
+      Logger.LogInformation("Name = {Name}", Model?.Name);
+      Logger.LogInformation("Surname = {Surname}", Model?.Surname);
+      Logger.LogInformation("Email = {Email}", Model?.Email);
+      Logger.LogInformation("Password = {Password}", Model?.Password);
+      Logger.LogInformation("dob = {dob}", Model?.DOB.ToUniversalTime());
+      Logger.LogInformation("Height = {Height}", Model?.Height);
+      Logger.LogInformation("Weight = {Weight}", Model?.Weight);
+      UserRepository.AddUser(Model);
+      
+  }
+  }
 
 <SurveyPrompt Title="How is Blazor working for you?"/>

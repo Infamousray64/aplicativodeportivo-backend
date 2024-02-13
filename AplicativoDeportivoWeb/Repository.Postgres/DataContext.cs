@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System.Globalization;
+using Microsoft.EntityFrameworkCore;
 
 namespace AplicativoDeportivoWeb.Repository.Postgres
 {
@@ -20,5 +21,8 @@ namespace AplicativoDeportivoWeb.Repository.Postgres
 
         public DbSet<Exercises> Exercises { get; set; }
 
+        public DbSet<Muscle> Muscle { get; set; }
+
+        public DbSet<CalendarExercise> CalendarExercise { get; set; }
     }
 }
