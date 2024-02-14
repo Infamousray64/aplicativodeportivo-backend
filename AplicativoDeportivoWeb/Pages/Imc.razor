@@ -1,0 +1,53 @@
+@page "/imc"
+@using AplicativoDeportivoWeb.Domain
+@using Toolbelt.Blazor.HeadElement
+@inject ILogger<Login> Logger
+@inject AplicativoDeportivoWeb.Repository.Postgres.IUserRepository UserRepository
+@inject NavigationManager NavigationManager
+@inject IHeadElementHelper HeadElementHelper
+
+
+<div class="container-fluid py-5 text-center index-page">
+<div class="Registro-page" style="max-width: 350px; margin: auto; box-shadow: 0px 0px 25px rgba(0,0,0,0.15); border-radius: 10px; background-color: rgba(200, 238, 238, 0.8);">
+        <img class="d-block mx-auto mb-4"  src="/images/38464.png" alt="" width="72" height="72">
+
+
+    <h3>Calculadora IMC</h3>
+
+    <div class="form-group "style="margin-top: 50px;" >
+        <div class="col-md-6 mx-auto">
+            <label for="weight"><strong>Peso (Kilogramos)</strong></label>
+    <input type="number" class="form-control" id="weight" @bind="Weight" min="0" step="0.1" placeholder="Ingrese peso">
+    </div>
+    </div>
+    <div class="form-group" style="margin-top: 10px;">
+            <div class="col-md-6 mx-auto">
+             <label for="height"><strong>Altura (Metros)</strong></label>       
+    <input type="number" class="form-control" id="height" @bind="Height" min="0" step="0.01" placeholder="Ingrese altura">
+    </div>
+    </div>
+    <button class="btn btn-primary" style="margin-top: 20px;" @onclick="CalculateImc">Calcular</button>
+       
+
+@if (BodyMassIndex != null)
+{
+    <p style="margin-top: 20px;"><strong><em>✅Tu IMC es: @BodyMassIndex✅</em></strong></p> 
+}
+<footer class="mt-auto my-5 pt-5 text-muted text-center text-small">
+        <p class="mb-1">&copy; 2023-2024 Ramón M R / TEG IUPSM </p>
+    </footer>
+    </div>
+   </div>
+@code {
+    private double Weight { get; set; }
+    private double Height { get; set; }
+    private double? BodyMassIndex { get; set; }
+
+    private void CalculateImc()
+    {
+        if (Height > 0 && Weight > 0)
+        {
+            BodyMassIndex = Weight / (Height * Height);
+        }
+    }
+}

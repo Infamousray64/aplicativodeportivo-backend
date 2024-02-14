@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Components.Web;
 using AplicativoDeportivoWeb.Data;
 using AplicativoDeportivoWeb.Repository.Postgres;
 using Microsoft.EntityFrameworkCore;
+using Toolbelt.Blazor.Extensions.DependencyInjection; 
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,10 +12,12 @@ builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 builder.Services.AddSingleton<WeatherForecastService>();
 
+
 // Add DataContext as a service
 builder.Services.AddDbContext<DataContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("WebApiDatabase")));
 
+builder.Services.AddHeadElementHelper();
 
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 

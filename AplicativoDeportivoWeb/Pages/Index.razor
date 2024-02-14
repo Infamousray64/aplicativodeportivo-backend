@@ -1,13 +1,20 @@
 ﻿@page "/"
 @using AplicativoDeportivoWeb.Domain
+@using Toolbelt.Blazor.HeadElement
 @inject ILogger<Index> Logger
 @inject AplicativoDeportivoWeb.Repository.Postgres.IUserRepository UserRepository
+@inject IHeadElementHelper HeadElementHelper
+@inject NavigationManager NavigationManager
 
-<PageTitle>Index</PageTitle>
-<h2>Registro de nuevo usuario</h2>
-        <p class="lead">¡Ingresa los datos que se solicitan a continuación para registrarte en la plataforma y puedas disfrutar de las utilidades que brinda el aplicativo web para el conocimiento deportivo! </p>
+<PageTitle>Registro</PageTitle>
 
- <form class="needs-validation" novalidate method="post" @onsubmit="Submit" @formname="Index">
+      <div class=index-page
+        <div class="py-5 text-center index-page">
+        <img class="d-block mx-auto mb-4" src="/images/38464.png" alt="" width="72" height="72">
+        <h1>Registro de nuevo usuario</h1>
+      </div>
+<div class="d-flex align-items-center justify-content-center vh-100 Registro-page text-center container" style="max-width: 600px; box-shadow: 0px 0px 25px rgba(0,0,0,0.15); background-color: rgba(200, 238, 238, 0.8); border-radius: 10px;">  
+  <form class="needs-validation" novalidate method="post" @onsubmit="Submit" @formname="Index">
             <AntiforgeryToken />
             <div class="row">
               <div class="col-md-6 mb-3">
@@ -61,6 +68,12 @@
             </div>
             <button class="btn btn-primary btn-lg btn-block" type="submit">¡Registrarse!</button>
           </form>
+        </div>
+        <footer class="my-5 pt-5 text-muted text-center text-small">
+        <p class="mb-1">&copy; 2023-2024 Ramón M R / TEG IUPSM </p>
+        
+      </footer>
+      </div>
 @code {
   [SupplyParameterFromForm]
   public User? Model { get; set; }
@@ -81,8 +94,9 @@
       Logger.LogInformation("Height = {Height}", Model?.Height);
       Logger.LogInformation("Weight = {Weight}", Model?.Weight);
       UserRepository.AddUser(Model);
-      
+
+      NavigationManager.NavigateTo("/login"); 
   }
+  
   }
 
-<SurveyPrompt Title="How is Blazor working for you?"/>

@@ -1,0 +1,20 @@
+@* Calendar.razor *@
+@using System.Globalization
+@inject NavigationManager NavigationManager
+@page "/calendar"
+
+<div class="calendar">
+    <div class="header">
+        <div>Calendario Semanal</div>
+    </div>
+    <div class="body">
+        @foreach (var dayOfWeek in Enum.GetValues(typeof(DayOfWeek)))
+        {
+            <Day DayValue="@dayOfWeek.ToString()" />
+        }
+    </div>
+</div>
+
+@code {
+    
+}

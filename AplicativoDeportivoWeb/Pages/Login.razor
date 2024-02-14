@@ -1,31 +1,43 @@
 @page "/login"
 @using AplicativoDeportivoWeb.Domain
+@using Toolbelt.Blazor.HeadElement
 @inject ILogger<Login> Logger
 @inject AplicativoDeportivoWeb.Repository.Postgres.IUserRepository UserRepository
 @inject NavigationManager NavigationManager
+@inject IHeadElementHelper HeadElementHelper
+
 <PageTitle>Login</PageTitle>
-<h2>Iniciar sesión</h2>
 
-<form class="needs-validation" novalidate method="post" @onsubmit="Submit">
-    <div class="mb-3">
-        <label for="email"> Ingresa el Email </label>
-        <InputText type="email" class="form-control" id="email" placeholder="" required @bind-Value="Model!.Email"/>
-    </div>
+<div class="d-flex align-items-center justify-content-center vh-100 login-page text-center"> 
 
-    <div class="mb-3">
-        <label for="password">Ingresa la Contraseña </label>
-        <InputText type="password" class="form-control" id="password" placeholder="" required @bind-Value="Model!.Password"/>
-    </div>
+    <form class="needs-validation" novalidate method="post" @onsubmit="Submit">
+        <img class="mb-4" src="/images/38464.png" alt="" width="72" height="72">
+        <h1 class="h3 mb-3 font-weight-normal">Iniciar Sesión</h1>
+        <InputText type="email" id="inputEmail" class="form-control" placeholder="Nombre de Usuario" required @bind-Value="Model!.Email"/>
+        <InputText type="password" id="inputPassword" class="form-control" placeholder="Contraseña" style="margin-top: 10px;" required @bind-Value="Model!.Password"/>
+        <div class="checkbox mb-3" style="margin-top: 10px;">
+            <label>
+                <input type="checkbox" value="remember-me"> Recordarme
+            </label>
+        </div>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Entrar</button>
+        <p style="margin-top: 20px; color: red;">@LoginMessage</p>
+        
+        <footer class="my-5 pt-5 text-muted text-center text-small">
+        <p class="mb-1">&copy; 2023-2024 Ramón M R / TEG IUPSM </p>
+        
+      </footer>
+    </form>
+    
+</div>
 
-    <button class="btn btn-primary btn-lg btn-block" type="submit">Iniciar sesión</button>
-    <p>@LoginMessage</p>
-</form>
+
+
 
 @code {
     [SupplyParameterFromForm]
     public User? Model { get; set; }
     public string LoginMessage { get; set; } = string.Empty;
-
     protected override void OnInitialized() => Model ??= new();
     private void Submit()
     {
@@ -33,11 +45,12 @@
         if (user != null && user.Password == Model.Password)
         {
             LoginMessage = "Login exitoso";
-            NavigationManager.NavigateTo("/counter");
+            NavigationManager.NavigateTo("/Personal");
         }
         else
         {
-            LoginMessage = "Usuario o contraseña incorrectos";
+            LoginMessage = "Usuario/contraseña incorrectos 😖";
         }
     }
+    
 }

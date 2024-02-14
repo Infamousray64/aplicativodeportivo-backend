@@ -1,0 +1,25 @@
+@page "/ejercicios"
+@using AplicativoDeportivoWeb.Repository.Postgres
+@using Microsoft.EntityFrameworkCore
+@inject DataContext DbContext
+
+<h1>Ejercicios</h1>
+
+<ul>
+    @if (exercises != null)
+    {
+        foreach (var exercise in exercises)
+        {
+            <li style="border: 1px solid black; padding: 40px; margin: 10px;">@exercise.Name</li>
+        }
+    }
+</ul>
+
+@code {
+    private List<Exercises> exercises;
+
+    protected override async Task OnInitializedAsync()
+    {
+        exercises = await DbContext.Exercises.ToListAsync();
+    }
+}

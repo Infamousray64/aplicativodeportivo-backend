@@ -1,0 +1,78 @@
+@page "/personal"
+@using AplicativoDeportivoWeb.Domain
+@using Toolbelt.Blazor.HeadElement
+@inject ILogger<Login> Logger
+@inject AplicativoDeportivoWeb.Repository.Postgres.IUserRepository UserRepository
+@inject NavigationManager NavigationManager
+@inject IHeadElementHelper HeadElementHelper
+
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <a class="navbar-brand" href="/personal" style="margin-left: 20px;">Espacio Personal</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Calendario</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Rutinas</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Tips</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Foro</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+<div style="margin-top: 70px;">    
+<PageTitle>Espacio Personal</PageTitle>
+
+<div class="jumbotron">
+        <div class="container Registro-page" style="max-width: auto; margin: auto; box-shadow: 0px 0px 25px rgba(0,0,0,0.15); border-radius: 10px; background-color: rgba(200, 238, 238, 0.5);">
+
+          <h1 class="display-3">🧠 Bienvenido a tu espacio 🫀</h1>
+          <p><em><strong>Comienza a organizar tus días de entrenamiento agregando rutinas al calendario, consultando ejercicios, optimizando tus entrenamientos y sintiendote libre de conversar con la comunidad en el foro</strong></em></p>
+          <p><a class="btn btn-primary btn-lg" href="#" role="button">Empezar &raquo;</a></p>
+        </div>
+      </div>
+
+      <div class="container">
+        
+        <!-- Example row of columns -->
+        <div class="row">
+          <div class="col-md-4">
+            <h2>Calendario 📅</h2>
+            <p>Esta herramienta esencial permite coordinar tus actividades deportivas con funciones integradas, como la posibilidad de editar y agregar rutinas a los días de entrenamiento, se ahorra tiempo valioso. ¡Optimiza tu tiempo y aprovechalo en cada rutina! </p>
+            <p><a class="btn btn-secondary" href="#" role="button">Ver detalles &raquo;</a></p>
+          </div>
+          <div class="col-md-4">
+            <h2>Rutinas 🏋️‍♀️</h2>
+            <p>Permite personalizar planes de entrenamiento al incluir ejercicios específicos para diferentes grupos musculares. Puedes diseñar rutinas adaptadas a tus objetivos, ya sea fuerza, resistencia o flexibilidad. ¡A entrenar con inteligencia!</p>
+            <p><a class="btn btn-secondary" href="#" role="button">Ver detalles &raquo;</a></p>
+          </div>
+          <div class="col-md-4">
+            <h2>Calculadora IMC 🤓</h2>
+            <p>Puedes aprender más sobre el mundo de la actividad física con tips variados: crecimiento muscular, ganar fuerza, acondicionamiento cardiovascular, alimentación sana y mucho más. ¡El conocimiento espera por ti para mejorar tus hábitos!</p>
+            <p><a class="btn btn-secondary" href="/imc" role="button">Ver detalles &raquo;</a></p>
+          </div>
+        </div>
+
+        <hr>
+
+      </div> <!-- /container -->
+
+
+
+    <footer class="container">
+      <p>&copy; 2023-2024 Ramón M R / TEG IUPSM</p>
+    </footer>
+</div>
+@code {
+    
+}

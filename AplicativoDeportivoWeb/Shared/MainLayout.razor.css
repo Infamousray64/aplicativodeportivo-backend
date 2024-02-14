@@ -1,3 +1,6 @@
+.hidden-menu {
+    display: none;
+}
 .page {
     position: relative;
     display: flex;
