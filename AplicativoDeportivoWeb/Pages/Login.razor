@@ -12,15 +12,17 @@
 
     <form class="needs-validation" novalidate method="post" @onsubmit="Submit">
         <img class="mb-4" src="/images/38464.png" alt="" width="72" height="72">
+        
         <h1 class="h3 mb-3 font-weight-normal">Iniciar Sesión</h1>
-        <InputText type="email" id="inputEmail" class="form-control" placeholder="Nombre de Usuario" required @bind-Value="Model!.Email"/>
-        <InputText type="password" id="inputPassword" class="form-control" placeholder="Contraseña" style="margin-top: 10px;" required @bind-Value="Model!.Password"/>
+        <InputText type="email" id="inputEmail" class="form-control" placeholder="Nombre de Usuario" required @bind-Value="Model!.Email" style="box-shadow: 0px 0px 30px 2px rgb(195, 247, 255);"/>
+        <InputText type="password" id="inputPassword" class="form-control" placeholder="Contraseña"  required @bind-Value="Model!.Password" style="box-shadow: 0px 0px 30px 2px rgb(195, 247, 255); margin-top: 10px"/>
         <div class="checkbox mb-3" style="margin-top: 10px;">
             <label>
                 <input type="checkbox" value="remember-me"> Recordarme
             </label>
         </div>
         <button class="btn btn-lg btn-primary btn-block" type="submit">Entrar</button>
+        <button class="btn btn-lg btn-secondary btn-block" @onclick="NavigateToRegister">Registrarse</button>
         <p style="margin-top: 20px; color: red;">@LoginMessage</p>
         
         <footer class="my-5 pt-5 text-muted text-center text-small">
@@ -52,5 +54,8 @@
             LoginMessage = "Usuario/contraseña incorrectos 😖";
         }
     }
-    
+   private void NavigateToRegister()
+    {
+        NavigationManager.NavigateTo("/");
+    } 
 }

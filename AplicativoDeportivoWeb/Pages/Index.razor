@@ -9,25 +9,25 @@
 <PageTitle>Registro</PageTitle>
 
       <div class=index-page
-        <div class="py-5 text-center index-page">
+        <div class="py-5 text-center ">
         <img class="d-block mx-auto mb-4" src="/images/38464.png" alt="" width="72" height="72">
-        <h1>Registro de nuevo usuario</h1>
+        <h1 >Registro de nuevo usuario</h1>
       </div>
-<div class="d-flex align-items-center justify-content-center vh-100 Registro-page text-center container" style="max-width: 600px; box-shadow: 0px 0px 25px rgba(0,0,0,0.15); background-color: rgba(200, 238, 238, 0.8); border-radius: 10px;">  
-  <form class="needs-validation" novalidate method="post" @onsubmit="Submit" @formname="Index">
+<div class="d-flex align-items-center justify-content-center vh-100  text-center container">  
+  <form class="needs-validation" method="post" @onsubmit="Submit" @formname="Index">
             <AntiforgeryToken />
             <div class="row">
               <div class="col-md-6 mb-3">
-                <label for="firstName">Nombre</label>
-                <InputText type="text" class="form-control" id="firstName" placeholder=""  required @bind-Value="Model!.Name"/>
+                <label for="firstName"><strong><em>Nombre</em></strong></label>
+                <InputText type="text" class="form-control" id="firstName" placeholder=""  required @bind-Value="Model!.Name" style="box-shadow: 0px 0px 30px 2px rgb(195, 247, 255);"/>
                 <div class="invalid-feedback">
                   Valid first name is required.
                 </div>
               </div>
 
               <div class="col-md-6 mb-3">
-                <label for="Surname">Apellido</label>
-                <InputText type="text" class="form-control" id="Surname" placeholder=""  required @bind-Value="Model!.Surname"/>
+                <label for="Surname"><strong><em>Apellido</em></strong></label>
+                <InputText type="text" class="form-control" id="Surname" placeholder=""  required @bind-Value="Model!.Surname" style="box-shadow: 0px 0px 30px 10px rgb(195, 247, 255);"/>
                 <div class="invalid-feedback">
                   Valid last name is required.
                 </div>
@@ -35,32 +35,29 @@
             </div>
 
             <div class="mb-3">
-              <label for="email">Email </label>
-              <InputText type="email" class="form-control" id="email" placeholder=""  required @bind-Value="Model!.Email"/>
+              <label for="email"><strong><em>Email</em></strong></label>
+              <InputText type="email" class="form-control" id="email" placeholder=""  required @bind-Value="Model!.Email" style="box-shadow: 0px 0px 30px 10px rgb(195, 247, 255);"/>
             </div>
 
             <div class="mb-3">
-              <label for="password">Contraseña </label>
-              <InputText type="password" class="form-control" id="password" placeholder=""  required @bind-Value="Model!.Password"/>
+              <label for="password"><strong><em>Contraseña</em></strong></label>
+              <InputText type="password" class="form-control" id="password" placeholder=""  required @bind-Value="Model!.Password" style="box-shadow: 0px 0px 30px 10px rgb(195, 247, 255);"/>
             </div>
 
            <div class="mb-3">
-              <label for="dob">Fecha de nacimiento </label>
-                <InputDate class="form-control" id="dob" placeholder=""  required @bind-Value="Model!.DOB"/>
+              <label for="dob"><strong><em>Fecha de nacimiento</em></strong></label>
+                <InputDate class="form-control" id="dob" placeholder=""  required @bind-Value="Model!.DOB" style="box-shadow: 0px 0px 30px 10px rgb(195, 247, 255);"/>
             </div>
 
             <div class="mb-3">
-              <label for="peso">Peso </label>
-              <InputNumber type="float" class="form-control" id="Weight" placeholder=""  required @bind-Value="Model!.Weight"/>
+              <label for="peso"><strong><em>Peso</em></strong></label>
+              <InputNumber type="float" class="form-control" id="Weight" placeholder=""  required @bind-Value="Model!.Weight" style="box-shadow: 0px 0px 30px 10px rgb(195, 247, 255);"/>
             </div>
 
             <div class="mb-3">
-              <label for="height">Altura </label>
-              <InputNumber type="float" class="form-control" id="Height" placeholder=""  required @bind-Value="Model!.Height"/>
+              <label for="height"><strong><em>Altura</em></strong></label>
+              <InputNumber type="float" class="form-control" id="Height" placeholder=""  required @bind-Value="Model!.Height" style="box-shadow: 0px 0px 30px 10px rgb(195, 247, 255);"/>
             </div>
-            
-            <hr class="mb-4">
-
             
 
             <div class="d-block my-3">

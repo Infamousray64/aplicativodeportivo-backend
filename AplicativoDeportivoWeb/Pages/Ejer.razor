@@ -1,0 +1,46 @@
+@page "/ejer/{muscleName}"
+@using AplicativoDeportivoWeb.Repository.Postgres
+@using Microsoft.EntityFrameworkCore
+@inject DataContext DbContext
+
+<h1>Ejercicios para @TranslateMuscleName(MuscleName)</h1>
+
+<ul>
+    @if (exercises != null)
+    {
+        foreach (var exercise in exercises)
+        {
+            
+            <li>@exercise.Name</li>
+        }
+    }
+</ul>
+
+@code {
+    [Parameter]
+    public string MuscleName { get; set; }
+
+    private List<Exercises> exercises;
+
+    protected override async Task OnInitializedAsync()
+    {
+        exercises = await DbContext.Exercises
+            .Where(e => e.Muscle == MuscleName)
+            .ToListAsync();
+    }
+    private string TranslateMuscleName(string muscleName)
+    {
+        var translations = new Dictionary<string, string>
+        {
+            { "Chest", "Pecho" },
+            { "Biceps", "Bíceps" },
+            { "Triceps", "Tríceps" },
+            { "Back", "Espalda" },
+            { "Core", "Abdomen" },
+            { "Legs", "Piernas" },
+            { "Shoulders", "Hombros" }
+        };
+
+        return translations.TryGetValue(muscleName, out var translatedName) ? translatedName : muscleName;
+    }
+}
